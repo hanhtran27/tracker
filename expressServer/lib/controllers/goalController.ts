@@ -38,7 +38,7 @@ export class GoalController {
     public updateGoal(req: Request, res: Response) {
         Goal.findOneAndUpdate({ _id: req.params.goalId },
         req.body, 
-        { new: true }, //return modified document 
+        { new: true }, 
         (err, goal) => {
             if (err) {
                 res.send(err);
