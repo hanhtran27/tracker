@@ -9,15 +9,11 @@ class App {
     public app: express.Application;
     //define routes
     public routes: Routes = new Routes();
-    //define mongoDB
-    public mongoUrl: string = 'mongodb://localhost/mongodb';  
-
 
     constructor() {
         this.app = express();
         this.config();    
         this.routes.routes(this.app);     
-        this.mongoSetup(); 
     }
 
     private config(): void{
@@ -27,10 +23,7 @@ class App {
         this.app.use(bodyParser.urlencoded({ extended: false }));
     }
 
-    private mongoSetup(): void{
-        mongoose.Promise = global.Promise;
-        mongoose.connect(this.mongoUrl, { useNewUrlParser: true });    
-    }
+    
 }
 
 export default new App().app;
