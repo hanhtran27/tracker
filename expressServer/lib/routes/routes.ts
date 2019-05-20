@@ -1,19 +1,32 @@
 import { Request, Response } from "express";
 import { GoalController } from "../controllers/goalController";
 import { UserController } from "../controllers/userController";
+import { RecordController } from "../controllers/recordController";
 
-export class Routes {
+class Routes {
     public goalController: GoalController = new GoalController();
     public userController: UserController = new UserController();
+    public recordController: RecordController = new RecordController();
     
     public routes(app): void {
 
         //GOALS
 
-        app.route('/goal')
+        app.route('/goals')
             //get all goals
             .get(this.goalController.getGoals)
-            //create a goal
+
+        app.route('/goals/tag/:tag')
+            //get goals with same tag
+            .get(this.goalController.getGoalsWithTag)
+
+        
+        app.route('/goals/user/:userId')
+            //get goals of a same user
+            .get(this.goalController.getGoalsWithUserId)
+
+        //create a goal
+        app.route('/goal')         
             .post(this.goalController.addNewGoal)
 
         app.route('/goal/:goalId')
@@ -24,11 +37,14 @@ export class Routes {
             // Delete a goal 
             .delete(this.goalController.deleteGoal)
 
+
         //USERS
 
-        app.route('/user')
+        app.route('/users')
             //get all users
             .get(this.userController.getUsers)
+
+        app.route('/user')
             //create a user
             .post(this.userController.addNewUser)
 
@@ -39,5 +55,26 @@ export class Routes {
             .put(this.userController.updateUser)
             // Delete a user
             .delete(this.userController.deleteUser)
+
+        //Records 
+
+        //create a record
+        app.route('/record')
+            .post(this.recordController.addNewRecord)
+
+        app.route('/record/:recordId')
+            //get specific record
+            .get(this.recordController.getRecordWithId)
+            //Update a record
+            .put(this.recordController.updateRecord)
+            // Delete a record
+            .delete(this.recordController.deleteRecord)
+
+        //get records of a same goal
+        app.route('/record/:goalId')
+            .get(this.recordController.getRecordsWithGoalId)
+
     }
 }
+
+export {Routes};

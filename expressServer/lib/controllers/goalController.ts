@@ -35,6 +35,24 @@ export class GoalController {
         });
     }
 
+    public getGoalsWithTag(req:Request, res:Response){
+        Goal.find({"tag": req.params.tag},(err,goals) =>{
+            if(err){
+                res.send(err);
+            }
+            res.json(goals);
+        });
+    }
+
+    public getGoalsWithUserId(req:Request, res:Response){
+        Goal.find({"userId": mongoose.Types.ObjectId.ObjectId(req.params.userId)},(err,goals) =>{
+            if(err){
+                res.send(err);
+            }
+            res.json(goals);
+        });
+    }
+
     public updateGoal(req: Request, res: Response) {
         Goal.findOneAndUpdate({ _id: req.params.goalId },
         req.body, 
