@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var express = require("express");
 var bodyParser = require("body-parser");
+var cors = require("cors");
 var routes_1 = require("./routes/routes");
 var App = /** @class */ (function () {
     function App() {
@@ -16,6 +17,7 @@ var App = /** @class */ (function () {
         this.app.use(bodyParser.json());
         //support application/x-www-form-urlencoded post data
         this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(cors());
     };
     return App;
 }());

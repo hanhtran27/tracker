@@ -3,15 +3,24 @@ db.createCollection('users')
 usersCollection = db.getCollection('users')
 usersCollection.remove({})
 
+usersCollection.insert({
+    firstName: "Hanh",
+    lastName: "Tran",
+    email: "htran@fake.email.com",
+    userName: "hanh",
+    hash: "1"
+})
 usersCollection.insert(
 {
     email: "chenq5@seattleu.edu",
+    userName: "qian",
     hash: "123"
 }
 )
 usersCollection.insert(
 {
     email: "khanh@seattleu.edu",
+    userName: "khanh",
     hash: "456"
 }
 )

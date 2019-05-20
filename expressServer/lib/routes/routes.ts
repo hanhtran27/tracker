@@ -2,13 +2,23 @@ import { Request, Response } from "express";
 import { GoalController } from "../controllers/goalController";
 import { UserController } from "../controllers/userController";
 import { RecordController } from "../controllers/recordController";
+import { LoginController } from "../controllers/loginController";
+import { RegisterController } from "../controllers/registerController";
 
 class Routes {
     public goalController: GoalController = new GoalController();
     public userController: UserController = new UserController();
     public recordController: RecordController = new RecordController();
-    
+    public loginController: LoginController = new LoginController();
+    public registerController: RegisterController = new RegisterController();
+
     public routes(app): void {
+        // Login
+        app.route('/login')
+            .post(this.loginController.login)
+        // Register
+        app.route('/register')
+            .post(this.registerController.register)
 
         //GOALS
 
