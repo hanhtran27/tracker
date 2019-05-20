@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { RecordSchema } from '../models/recordModel';
 
 const Record = mongoose.model("Record", RecordSchema);
+mongoose.set('useFindAndModify', false);
 
 export class RecordController {
 
@@ -27,7 +28,7 @@ export class RecordController {
     }
 
     public getRecordWithId(req: Request, res: Response) {
-        Record.findById(req.params.goalId, (err, record) => {
+        Record.findById(req.params.recordId, (err, record) => {
             if (err) {
                 res.send(err);
             }
@@ -36,7 +37,7 @@ export class RecordController {
     }
 
     public getRecordsWithGoalId(req: Request, res: Response) {
-        Record.findById(req.params.goalId, (err, records) => {
+        Record.find({"goalId": mongoose.Types.ObjectId.ObjectId(req.params.goalId)}, (err, records) => {
             if (err) {
                 res.send(err);
             }
@@ -57,7 +58,7 @@ export class RecordController {
     }
 
     public deleteRecord(req: Request, res: Response) {           
-        Record.remove({ _id: req.params.recordId }, 
+        Record.deleteOne({ _id: req.params.recordId }, 
             (err, record) => {
             if(err){
                 res.send(err);

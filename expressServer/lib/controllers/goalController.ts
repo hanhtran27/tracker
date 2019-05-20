@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { GoalSchema } from '../models/goalModel';
 
 const Goal = mongoose.model('Goal', GoalSchema);
+mongoose.set('useFindAndModify', false);
 
 export class GoalController {
 
@@ -66,7 +67,7 @@ export class GoalController {
     }
 
     public deleteGoal(req: Request, res: Response) {           
-        Goal.remove({ _id: req.params.goalId }, 
+        Goal.deleteOne({ _id: req.params.goalId }, 
             (err, goal) => {
             if(err){
                 res.send(err);

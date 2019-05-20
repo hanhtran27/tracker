@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { UserSchema } from '../models/userModel';
 
 const User = mongoose.model('User', UserSchema);
+mongoose.set('useFindAndModify', false);
 
 export class UserController {
     public addNewUser(req: Request, res: Response) {
@@ -47,7 +48,7 @@ export class UserController {
     }
 
     public deleteUser(req: Request, res: Response) {           
-        User.remove({ _id: req.params.userId }, 
+        User.deleteOne({ _id: req.params.userId }, 
             (err, user) => {
             if(err){
                 res.send(err);

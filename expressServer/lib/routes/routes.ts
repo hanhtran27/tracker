@@ -16,11 +16,11 @@ class Routes {
             //get all goals
             .get(this.goalController.getGoals)
 
-        app.route('/goals/tag/:tag')
+        app.route('/goals/tag/:tag')    //fixme: should have user id 
             //get goals with same tag
             .get(this.goalController.getGoalsWithTag)
 
-        
+        // /goals?userId="agdsgdaf"
         app.route('/goals/user/:userId')
             //get goals of a same user
             .get(this.goalController.getGoalsWithUserId)
@@ -61,6 +61,10 @@ class Routes {
         //create a record
         app.route('/record')
             .post(this.recordController.addNewRecord)
+        
+        //get all records
+        app.route('/records')
+            .get(this.recordController.getRecords)
 
         app.route('/record/:recordId')
             //get specific record
@@ -71,7 +75,7 @@ class Routes {
             .delete(this.recordController.deleteRecord)
 
         //get records of a same goal
-        app.route('/record/:goalId')
+        app.route('/records/goal/:goalId') //
             .get(this.recordController.getRecordsWithGoalId)
 
     }
