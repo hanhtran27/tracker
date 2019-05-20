@@ -3,13 +3,23 @@ exports.__esModule = true;
 var goalController_1 = require("../controllers/goalController");
 var userController_1 = require("../controllers/userController");
 var recordController_1 = require("../controllers/recordController");
+var loginController_1 = require("../controllers/loginController");
+var registerController_1 = require('../controllers/registerController');
 var Routes = /** @class */ (function () {
     function Routes() {
         this.goalController = new goalController_1.GoalController();
         this.userController = new userController_1.UserController();
         this.recordController = new recordController_1.RecordController();
+        this.loginController = new loginController_1.LoginController();
+        this.registerController = new registerController_1.RegisterController();
     }
     Routes.prototype.routes = function (app) {
+        //LOGIN
+        app.route('/login')
+            .post(this.loginController.login);
+        //REGISTER
+        app.route('/register')
+            .post(this.registerController.register);
         //GOALS
         app.route('/goals')
             //get all goals
