@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   email:string;
-  hash:string;
+  password:string;
   invisible:string;
 
   constructor(private userService:UserService,
@@ -24,11 +23,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    let user = {
-      email: this.email,
-      hash: this.hash};
     this.userService
-        .checkregister(user)
+        .checkregister(this.email, this.password)
         .subscribe((res:any) => {
           if (res.token) {
             this.authService.setAuthenticationToken(res.token);
