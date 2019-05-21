@@ -11,6 +11,7 @@ var RegisterController = /** @class */ (function () {
     RegisterController.prototype.register = async function (req, res) {
 
         await User.find({'email': req.body.email}, (err, user) => {
+            if (err) throw err;
             if (user.length > 0) {
                 res.json({status: "Invalid"});
             }
@@ -20,10 +21,6 @@ var RegisterController = /** @class */ (function () {
         user.save((err, data) => {
             if (err) throw err;
             res.json({
-                firstName: user.firstName,
-                lastName: user.lastName,
-                userName: user.userName,
-                email: user.email,
                 token: user.userName + user.hash
             });
         });

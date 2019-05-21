@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../components/models/user';
+import { User } from '../models/user';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,12 +18,12 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  checklogin(username:string, password:string):Observable<any> {
-    let login = {userName:username, password:password};
+  checklogin(email:string, hash:string):Observable<any> {
+    let login = {email:email, hash:hash};
     return this.http.post(this.loginUrl, login, httpOptions);
   }
 
   checkregister(user:User):Observable<any> {
-    return this.http.post<any>(this.registerUrl, user, httpOptions);
+    return this.http.post(this.registerUrl, user, httpOptions);
   }
 }

@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username:string;
+  email:string;
   hash:string;
   invisible:string;
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService
-        .checklogin(this.username, this.hash)
+        .checklogin(this.email, this.hash)
         .subscribe((res:any) => {
           if (res.status) {
             this.authService.setAuthenticationToken(res.token);

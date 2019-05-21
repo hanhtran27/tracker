@@ -10,11 +10,11 @@ var LoginController = /** @class */ (function () {
     LoginController.prototype.login = function (req, res) {
         console.log(req.body)
         User.find(
-            {'userName':req.body.userName, 'hashabcxyz':req.body.hash},
+            {'email':req.body.email, 'hash':req.body.hash},
             (err, goal) => {
                 if (err) throw (err);
                 if (goal.length != 0) {
-                    let token = req.body.userName + req.body.hash;
+                    let token = req.body.email + req.body.hash;
                     res.json({status: true, token: token});
                 } else {
                     res.json({status: false});        

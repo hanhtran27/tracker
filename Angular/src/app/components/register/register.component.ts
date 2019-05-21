@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user';
+import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,9 +11,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  firstname:string;
-  lastname:string;
-  username:string;
   email:string;
   hash:string;
   invisible:string;
@@ -28,10 +25,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     let user = {
-      firstName: this.firstname,
-      lastName: this.lastname,
       email: this.email,
-      userName: this.username, 
       hash: this.hash};
     this.userService
         .checkregister(user)
