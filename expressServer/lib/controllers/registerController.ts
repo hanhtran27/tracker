@@ -7,7 +7,6 @@ const User = mongoose.model('User', UserSchema);
 export class RegisterController {
 
     public async register(req: Request, res:Response) {
-        console.log("Registerin ...")
 
         await User.find({'email': req.body.email}, (err, user) => {
             res.json({status: "Invalid"});
