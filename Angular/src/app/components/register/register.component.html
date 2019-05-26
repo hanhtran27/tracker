@@ -5,17 +5,6 @@
       <div class="offset-md-4 column-md-4">
         <h3> Welcome to GoalMinner</h3>
         <hr>
-        <!--Name form-->
-        <div class="form-row">
-          <div class="col">
-            <p> First Name </p>
-            <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="firstname" name="firstname" required>
-          </div>
-          <div class="col">
-            <p> Last Name</p>
-            <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" required>
-          </div>
-        </div>
 
           <!--Email form-->
         <div class="form-group">
@@ -23,16 +12,10 @@
           <input type="email" class="form-control" id="inputEmail" placeholder="Email" [(ngModel)]="email" name="email" required>
         </div>
 
-        <!--Username form-->
-        <div class="form-group">
-          <label for="inputUserName">Username</label>
-          <input type="text" class="form-control" id="inputUserName" placeholder="Username" [(ngModel)]="username" name="username" required>
-        </div>
-
         <!--Password form-->
         <div class="form-group">
           <label for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="hash" name="hash" required>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="password" name="password" required>
         </div>
 
         <!--Create login link-->
@@ -42,7 +25,7 @@
         </div>
 
         <div class="alert alert-danger {{invisible}}">
-          <strong>Registered email, existed username, or missing input on required field.</strong>
+          <strong>Invalid Input.</strong>
         </div>
     
       </div>

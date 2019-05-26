@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Md5 } from 'ts-md5/dist/md5';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../components/models/user';
+import { User } from '../models/user';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,12 +19,16 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  checklogin(username:string, password:string):Observable<any> {
-    let login = {userName:username, password:password};
+  checklogin(email:string, password:string):Observable<any> {
+    //convert password to hash
+    let hash_l = Md5.hashStr(password);
+    let login = {email:email, hash:hash_l};
     return this.http.post(this.loginUrl, login, httpOptions);
   }
 
-  checkregister(user:User):Observable<any> {
-    return this.http.post<any>(this.registerUrl, user, httpOptions);
+  checkregister(email:string, password:string):Observable<any> {
+    let hash_r = Md5.hashStr(password);
+    let register = {email:email, hash:hash_r};
+    return this.http.post(this.registerUrl, register, httpOptions);
   }
 }
