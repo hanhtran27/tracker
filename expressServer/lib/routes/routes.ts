@@ -1,4 +1,3 @@
-import { Request, Response } from "express";
 import { GoalController } from "../controllers/goalController";
 import { UserController } from "../controllers/userController";
 import { RecordController } from "../controllers/recordController";

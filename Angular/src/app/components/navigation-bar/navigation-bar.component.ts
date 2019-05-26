@@ -23,7 +23,7 @@ export class NavigationBarComponent implements OnInit {
   
   goals() {
     console.info("goals clicked!");
-    this.router.navigate(['/']);
+    this.router.navigate(['/myGoals']);
   }
 
   about() {

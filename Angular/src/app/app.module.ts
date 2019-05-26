@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -12,6 +13,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AboutComponent } from './components/about/about.component';
 import { AuthGuard } from './guards/auth.guard';
+import { GoalComponent } from './goal/goal.component';
+import { GoalListComponent } from './goal-list/goal-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { AuthGuard } from './guards/auth.guard';
     LoginComponent,
     HomeComponent,
     NavigationBarComponent,
-    AboutComponent
+    AboutComponent,
+    GoalComponent,
+    GoalListComponent
   ],
   imports: [
     BrowserModule,
