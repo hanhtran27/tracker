@@ -46,7 +46,7 @@ export class GoalController {
     }
 
     public getGoalsWithUserId(req:Request, res:Response){
-        Goal.find({"userId": mongoose.Types.ObjectId.ObjectId(req.params.userId)},(err,goals) =>{
+        Goal.find({"userId": mongoose.Types.ObjectId(req.params.userId)},(err,goals) =>{
             if(err){
                 res.send(err);
             }
@@ -68,7 +68,7 @@ export class GoalController {
 
     public deleteGoal(req: Request, res: Response) {           
         Goal.deleteOne({ _id: req.params.goalId }, 
-            (err, goal) => {
+            (err) => {
             if(err){
                 res.send(err);
             }

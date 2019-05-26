@@ -14,7 +14,7 @@ var LoginController = /** @class */ (function () {
             (err, goal) => {
                 if (err) throw (err);
                 if (goal.length != 0) {
-                    let token = req.body.email + req.body.hash;
+                    let token = req.body.email + req.body.hash + mongoose.Schema.Types.ObjectId;
                     res.json({status: true, token: token});
                 } else {
                     res.json({status: false});        

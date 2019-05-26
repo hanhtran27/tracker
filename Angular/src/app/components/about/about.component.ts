@@ -10,6 +10,8 @@ export class AboutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let item = localStorage.getItem('token');
+    console.info('token = ', item);
   }
 
 }

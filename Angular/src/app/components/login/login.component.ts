@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService
-        .checklogin(this.email, this.password)
+        .checklogin(this.email, this.password )
         .subscribe((res:any) => {
           if (res.status) {
             this.authService.setAuthenticationToken(res.token);

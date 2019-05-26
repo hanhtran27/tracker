@@ -27,6 +27,7 @@ export class UserService {
   }
 
   checkregister(email:string, password:string):Observable<any> {
+    //convert user password to hash
     let hash_r = Md5.hashStr(password);
     let register = {email:email, hash:hash_r};
     return this.http.post(this.registerUrl, register, httpOptions);
