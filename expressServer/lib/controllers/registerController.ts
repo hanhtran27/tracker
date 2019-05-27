@@ -15,11 +15,11 @@ export class RegisterController {
             }
         });
 
-        let user = User(req.body);
+        let user = new User(req.body);
         user.save((err: any, result: any) => {
             if (err) throw err;
             res.json({
-                token: user.userName + user.hash
+                token: result.email +  result.hash
             });
         });
     }

@@ -16,9 +16,11 @@ export class AuthService {
 
   setAuthenticationToken(token: string) {
     localStorage.setItem('token', token);
+    console.info("stored token: ", token);
   }
 
   clearAuthenticationToken() {
     localStorage.removeItem('token');
+    console.log("cleared token!");
   }
 }
