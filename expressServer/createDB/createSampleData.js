@@ -5,18 +5,19 @@ usersCollection.remove({})
 
 usersCollection.insert({
     email: "htran@fake.email.com",
-    hash: "1"
+    //all hash are hash value encrypted from password "123456" using Md5
+    hash: "e10adc3949ba59abbe56e057f20f883e"
 })
 usersCollection.insert(
 {
     email: "chenq5@seattleu.edu",
-    hash: "123"
+    hash: "e10adc3949ba59abbe56e057f20f883e"
 }
 )
 usersCollection.insert(
 {
     email: "khanh@seattleu.edu",
-    hash: "456"
+    hash: "e10adc3949ba59abbe56e057f20f883e"
 }
 )
 

@@ -44,3 +44,16 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Data Files
+/expressServer/db/*
+
+# Compiled js files
+app.js
+goalController.js
+loginController.js
+recordController.js
+registerController.js
+userController.js
+userModel.js
+routes.js

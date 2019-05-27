@@ -2,8 +2,8 @@
 exports.__esModule = true;
 var express = require("express");
 var bodyParser = require("body-parser");
-var cors = require("cors");
 var routes_1 = require("./routes/routes");
+var cors = require("cors");
 var App = /** @class */ (function () {
     function App() {
         //define routes

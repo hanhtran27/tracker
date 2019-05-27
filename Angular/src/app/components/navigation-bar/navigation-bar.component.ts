@@ -27,12 +27,12 @@ export class NavigationBarComponent implements OnInit {
   }
 
   about() {
-    console.info("abt clicked!");
+    console.info("about clicked!");
     this.router.navigate(['/about']);
   }
 
   login() {
-    console.info("logined clicked!");
+    console.info("login clicked!");
     this.authService.clearAuthenticationToken();
     this.loginout = "Login";
     this.router.navigate(['/login']);

@@ -16,6 +16,8 @@ export class GoalController {
             }
             res.json(goal);
         });
+
+        console.log("new goal created: "+req.body.goalName);
     }
 
     public getGoals(req: Request, res: Response) {
