@@ -23,4 +23,8 @@ export class AuthService {
     localStorage.removeItem('token');
     console.log("cleared token!");
   }
+
+  getToken():string {
+    return localStorage.getItem("token");
+  }
 }

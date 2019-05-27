@@ -1,14 +1,28 @@
 import * as mongoose from 'mongoose';
 import { Request, Response } from 'express';
 import { GoalSchema } from '../models/goalModel';
+import { TokenController } from './tokenController';
 
 const Goal = mongoose.model('Goal', GoalSchema);
 mongoose.set('useFindAndModify', false);
 
 export class GoalController {
 
-    public addNewGoal(req: Request, res: Response) {
-        let newGoal = new Goal(req.body);
+    public async addNewGoal(req: Request, res: Response) {
+        let userId:string;
+        //get userid out to add to goal
+        await TokenController.getUserIdFromToken(req.header('authorization')).then((result) => {
+            userId = result;
+        });
+
+        //add goal for the curently login user
+        let newGoal = new Goal ({userId: userId,
+                        goalName: req.body.goalName,
+                        tag:req.body.tag,
+                        goalNumber: req.body.goalNumber,
+                        goalUnit: req.body.goalUnit,
+                        startDate: req.body.startDate,
+                        dueDate: req.body.dueDate});
 
         newGoal.save((err, goal) => {
             if (err) {
@@ -16,15 +30,23 @@ export class GoalController {
             }
             res.json(goal);
         });
+
+        console.log("new goal created: "+req.body.goalName);
     }
 
-    public getGoals(req: Request, res: Response) {
-        Goal.find({}, (err, goal) => {
+    public async getGoals(req: Request, res: Response) {
+        let userId:string;
+
+        await TokenController.getUserIdFromToken(req.header('authorization')).then((result) => {
+            userId = result;
+        });
+        //return goals of the curently login user
+        Goal.find({userId:userId}, (err, goal) => {
             if (err) {
                 res.send(err);
             }
             res.json(goal);
-        });
+            });
     }
 
     public getGoalWithId(req: Request, res: Response) {

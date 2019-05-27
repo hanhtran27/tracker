@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import * as mongoose from 'mongoose';
-import { UserSchema } from 'models/userModel';
+import { UserSchema } from '../models/userModel';
+import { TokenController } from './tokenController';
 
 const User = mongoose.model('User', UserSchema);
 
@@ -11,7 +12,7 @@ export class RegisterController {
         await User.find({'email': req.body.email}, (err, user) => {
             if (err) throw err;
             if (user.length > 0) {
-                res.json({status: "Invalid"});
+                res.json({status: "Email already exists!"});  
             }
         });
 
@@ -19,7 +20,7 @@ export class RegisterController {
         user.save((err: any, result: any) => {
             if (err) throw err;
             res.json({
-                token: result.email +  result.hash
+                token: TokenController.generateToken(result.email,result.hash)
             });
         });
     }

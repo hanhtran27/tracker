@@ -3,6 +3,7 @@ exports.__esModule = true;
 var mongoose = require("mongoose");
 var recordModel_1 = require("../models/recordModel");
 var Record = mongoose.model("Record", recordModel_1.RecordSchema);
+mongoose.set('useFindAndModify', false);
 var RecordController = /** @class */ (function () {
     function RecordController() {
     }
@@ -24,7 +25,7 @@ var RecordController = /** @class */ (function () {
         });
     };
     RecordController.prototype.getRecordWithId = function (req, res) {
-        Record.findById(req.params.goalId, function (err, record) {
+        Record.findById(req.params.recordId, function (err, record) {
             if (err) {
                 res.send(err);
             }
@@ -32,7 +33,7 @@ var RecordController = /** @class */ (function () {
         });
     };
     RecordController.prototype.getRecordsWithGoalId = function (req, res) {
-        Record.findById(req.params.goalId, function (err, records) {
+        Record.find({ "goalId": mongoose.Types.ObjectId.ObjectId(req.params.goalId) }, function (err, records) {
             if (err) {
                 res.send(err);
             }
@@ -48,11 +49,11 @@ var RecordController = /** @class */ (function () {
         });
     };
     RecordController.prototype.deleteRecord = function (req, res) {
-        Record.remove({ _id: req.params.recordId }, function (err, record) {
+        Record.deleteOne({ _id: req.params.recordId }, function (err, record) {
             if (err) {
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted goal!' });
+            res.json({ message: 'Successfully deleted record!' });
         });
     };
     return RecordController;

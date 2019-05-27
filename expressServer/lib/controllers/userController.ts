@@ -9,6 +9,7 @@ export class UserController {
     public addNewUser(req: Request, res: Response) {
         let newUser = new User(req.body);
 
+        console.log("creating new user " + req.body.email);
         newUser.save((err, user) => {
             if (err) {
                 res.send(err);
@@ -49,7 +50,7 @@ export class UserController {
 
     public deleteUser(req: Request, res: Response) {           
         User.deleteOne({ _id: req.params.userId }, 
-            (err, user) => {
+            (err) => {
             if(err){
                 res.send(err);
             }

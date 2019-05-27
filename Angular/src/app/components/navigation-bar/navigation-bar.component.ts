@@ -23,16 +23,16 @@ export class NavigationBarComponent implements OnInit {
   
   goals() {
     console.info("goals clicked!");
-    this.router.navigate(['/']);
+    this.router.navigate(['/myGoals']);
   }
 
   about() {
-    console.info("abt clicked!");
+    console.info("about clicked!");
     this.router.navigate(['/about']);
   }
 
   login() {
-    console.info("logined clicked!");
+    console.info("login clicked!");
     this.authService.clearAuthenticationToken();
     this.loginout = "Login";
     this.router.navigate(['/login']);

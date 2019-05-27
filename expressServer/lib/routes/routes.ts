@@ -1,16 +1,15 @@
-import { Request, Response } from "express";
 import { GoalController } from "../controllers/goalController";
 import { UserController } from "../controllers/userController";
 import { RecordController } from "../controllers/recordController";
-import { LoginController } from "../controllers/loginController";
-import { RegisterController } from "../controllers/registerController";
+import {RegisterController} from "../controllers/registerController";
+import {LoginController} from "../controllers/loginController";
 
 class Routes {
     public goalController: GoalController = new GoalController();
     public userController: UserController = new UserController();
     public recordController: RecordController = new RecordController();
-    public loginController: LoginController = new LoginController();
     public registerController: RegisterController = new RegisterController();
+    public loginController: LoginController = new LoginController();
     
     public routes(app): void {
         //LOGIN
@@ -87,6 +86,12 @@ class Routes {
         //get records of a same goal
         app.route('/records/goal/:goalId') //
             .get(this.recordController.getRecordsWithGoalId)
+
+        app.route('/register')
+            .post(this.registerController.register)
+            
+        app.route('/login')
+            .post(this.loginController.login)
 
     }
 }

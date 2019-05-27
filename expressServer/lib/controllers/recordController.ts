@@ -63,7 +63,7 @@ export class RecordController {
             if(err){
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted goal!'});
+            res.json({ message: 'Successfully deleted record!'});
         });
     }
 }
