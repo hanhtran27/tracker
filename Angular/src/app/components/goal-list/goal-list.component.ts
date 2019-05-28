@@ -32,14 +32,6 @@ export class GoalListComponent implements OnInit {
 
     this.goalService.addGoal(newGoal)
       .subscribe(goalResult => this.goals.push(goalResult));
-
-      //3. cleartheinputfieldvalues
-  goalName.value = '';
-  tag.value = '';
-  goalNumber.value = '';
-  goalUnit.value = '';
-  startDate.value = '';
-  dueDate.value = '';
   }
 
   

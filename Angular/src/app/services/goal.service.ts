@@ -12,6 +12,7 @@ export class GoalService {
   private getGoalUrl = 'http://localhost:8080/goals';
   private postGoalUrl = 'http://localhost:8080/goal';
   private deleteGoalUrl = 'http://localhost:8080/goal/';
+  private updateGoalUrl = 'http://localhost:8080/goal/';
 
   //inject HttpClient
   constructor(private http: HttpClient) { }
@@ -26,6 +27,10 @@ export class GoalService {
 
   deleteGoal(goalId: string): Observable<{}> {
     return this.http.delete(this.deleteGoalUrl + goalId);
+  }
+
+  updateGoal(goal: Goal): Observable<{}> {
+    return this.http.put(this.updateGoalUrl + goal._id, goal);
   }
 }
 
