@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 // import Goal class from goal/goal.model.ts
-import { Goal } from '../models/goal.model';
-import { GoalService } from '../services/goal.service';
+import { Goal } from '../goal/goal.model';
+import { GoalService } from '../goal.service';
 
 @Component({
   selector: 'app-goal-list',

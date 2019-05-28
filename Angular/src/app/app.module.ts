@@ -13,7 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AboutComponent } from './components/about/about.component';
 import { AuthGuard } from './guards/auth.guard';
-import { GoalComponent } from './components/goal/goal.component';
+import { GoalComponent } from './goal/goal.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
 
 @NgModule({
