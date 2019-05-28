@@ -1,6 +1,6 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
 // import class Goal from goal.model.ts
-import { Goal } from './goal.model';
+import { Goal } from '../../models/goal.model';
 
 @Component({
   selector: 'app-goal',
