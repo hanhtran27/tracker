@@ -68,7 +68,9 @@ export class GoalController {
         });
     }
 
-    public deleteGoal(req: Request, res: Response) {           
+    public deleteGoal(req: Request, res: Response) { 
+        console.log("delete goal: " + req.params.goalId);         
+        
         Goal.deleteOne({ _id: req.params.goalId }, 
             (err, goal) => {
             if(err){
@@ -76,5 +78,6 @@ export class GoalController {
             }
             res.json({ message: 'Successfully deleted goal!'});
         });
+        
     }
 }

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-// import Goal class from goal/goal.model.ts
 import { Goal } from '../../models/goal.model';
 import { GoalService } from '../../services/goal.service';
 
@@ -17,10 +15,12 @@ export class GoalListComponent implements OnInit {
   constructor(private goalService: GoalService) { }
 
   ngOnInit() {
+    //call goal service to get all goals
     this.goalService.getGoals()
       .subscribe(goalsResult => this.goals = goalsResult);
   }
-
+  
+  // add a new goal
   addGoal(goalName: HTMLInputElement,
     tag: HTMLInputElement,
     goalNumber: HTMLInputElement,
@@ -41,6 +41,8 @@ export class GoalListComponent implements OnInit {
   startDate.value = '';
   dueDate.value = '';
   }
+
+  
 }
 
 

@@ -1,8 +1,9 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
-// import class Goal from goal.model.ts
 import { Goal } from '../../models/goal.model';
 import { Record } from '../../models/record.model';
 import { RecordService } from '../../services/record.service';
+import { GoalService } from '../../services/goal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-goal',
@@ -19,7 +20,7 @@ export class GoalComponent implements OnInit {
   records: Record [];
   finishedPercentage: string;
 
-  constructor(private recordService: RecordService) {
+  constructor(private recordService: RecordService, private goalService: GoalService, private router: Router) {
   }
 
   addRecord(finishedUnits: number, finishedDate: Date): void {
@@ -58,6 +59,13 @@ export class GoalComponent implements OnInit {
   ngAfterViewInit(){
     this.getRecodsByGoalId(this.goal._id);
   }
+
+  deleteGoal() {
+    console.log("calling deleteGoal with " + this.goal._id);
+    this.goalService.deleteGoal(this.goal._id).subscribe(() => this.router.navigate(["/myGoals"]));
+    
+  }
+
 
 }
 

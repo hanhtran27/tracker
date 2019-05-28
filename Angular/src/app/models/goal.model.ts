@@ -1,12 +1,11 @@
 export class Goal {
-    userId: string;
+    _id: string;
     goalName: string;
     tag: string;
     goalNumber: Number;
     goalUnit: string;
     startDate: Date;
     dueDate: Date;
-    _id: string;
 
     constructor(goalName: string, tag: string, goalNumber: Number, goalUnit: string, startDate: Date, dueDate: Date, goalId?: string) {
         this.goalName = goalName;

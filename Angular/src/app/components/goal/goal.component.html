@@ -1,4 +1,4 @@
-<h5 class="card-header">Due Date: {{goal.dueDate | date: 'dd/MM/yyyy'}}</h5>
+<h6 class="card-header">Due Date: {{goal.dueDate | date: 'dd/MM/yyyy'}}</h6>
 <div class="card-body">
     <h5 class="card-title">{{goal.goalName}}</h5>
     <p class="card-text">Tag: {{goal.tag}}</p>
@@ -13,6 +13,8 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" attr.data-target="#addRecordModal_{{goal._id}}">
             Add Record
     </button>
+    <button (click)="deleteGoal()" class="btn btn-danger">Delete</button>
+    <a href="#" class="btn btn-warning">Update</a>
 </div>
 
 <!-- Modal -->
