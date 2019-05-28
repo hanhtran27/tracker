@@ -68,6 +68,6 @@
 <!--display goals-->
 <div class="container">
     <div class="card" *ngFor="let goal of goals">
-        <app-goal [goal]="goal"> </app-goal>
+        <app-goal [goal]="goal" (deletedClick)="ngOnInit()"> </app-goal>
     </div>
 </div>

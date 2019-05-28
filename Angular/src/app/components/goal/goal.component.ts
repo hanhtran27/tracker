@@ -1,9 +1,8 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, OnInit, HostBinding, Input,  EventEmitter, Output } from '@angular/core';
 import { Goal } from '../../models/goal.model';
 import { Record } from '../../models/record.model';
 import { RecordService } from '../../services/record.service';
 import { GoalService } from '../../services/goal.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-goal',
@@ -20,7 +19,9 @@ export class GoalComponent implements OnInit {
   records: Record [];
   finishedPercentage: string;
 
-  constructor(private recordService: RecordService, private goalService: GoalService, private router: Router) {
+  @Output() deletedClick = new EventEmitter<boolean>();
+
+  constructor(private recordService: RecordService, private goalService: GoalService) {
   }
 
   addRecord(finishedUnits: number, finishedDate: Date): void {
@@ -62,7 +63,9 @@ export class GoalComponent implements OnInit {
 
   deleteGoal() {
     console.log("calling deleteGoal with " + this.goal._id);
-    this.goalService.deleteGoal(this.goal._id).subscribe(() => this.router.navigate(["/myGoals"]));
+
+    // emit a signal to notify parent component(goal-list)
+    this.goalService.deleteGoal(this.goal._id).subscribe(() => this.deletedClick.emit(true));
     
   }
 
