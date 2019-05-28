@@ -16,10 +16,10 @@ export class GoalService {
   constructor(private http: HttpClient) { }
 
   getGoals(): Observable<Goal[]> {
-    return this.http.get<Goal[]>(this.getGoalUrl)
+    return this.http.get<Goal[]>(this.getGoalUrl);
   }
 
   addGoal(goal: Goal): Observable<Goal> {
-    return this.http.post<Goal>(this.postGoalUrl, goal)
+    return this.http.post<Goal>(this.postGoalUrl, goal);
   }
 }

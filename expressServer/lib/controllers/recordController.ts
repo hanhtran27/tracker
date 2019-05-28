@@ -8,11 +8,12 @@ mongoose.set('useFindAndModify', false);
 export class RecordController {
 
     public addNewRecord(req: Request, res: Response) {
+        console.log("creating new record... ");
         let newRecord = new Record(req.body);
-
         newRecord.save((err, record) => {
             if (err) {
                 res.send(err);
+                console.log(err);
             }
             res.json(record);
         });
