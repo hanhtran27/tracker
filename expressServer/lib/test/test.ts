@@ -35,7 +35,7 @@ describe('Testing GET goals', () => {
   });
 
   it('Should return a single object', (done) => {
-      const goalId = '5ce3b88f760dc73c92b26962'
+    const goalId = '5ce3b88f760dc73c92b26962'
     chai.request(app)
         .get(`/goal/${goalId}`)
         .end(function(err, res) {

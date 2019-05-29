@@ -15,6 +15,8 @@ import { AboutComponent } from './components/about/about.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GoalComponent } from './components/goal/goal.component';
 import { GoalListComponent } from './components/goal-list/goal-list.component';
+import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
+import { RecordComponent } from './components/record/record.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { GoalListComponent } from './components/goal-list/goal-list.component';
     NavigationBarComponent,
     AboutComponent,
     GoalComponent,
-    GoalListComponent
+    GoalListComponent,
+    GoalDetailsComponent,
+    RecordComponent
   ],
   imports: [
     BrowserModule,
