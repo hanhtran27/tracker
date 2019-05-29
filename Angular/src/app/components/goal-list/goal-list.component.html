@@ -64,6 +64,6 @@
 </div>
 
 <h3>Top Goals</h3>
-<a *ngFor="let goal of goals" class="col-1-4"routerLink = "/detail/{{goal._id}}">
+<div *ngFor="let goal of goals" class="col-1-4">
     <app-goal [goal]="goal" (deletedClick)="ngOnInit()" (updatedClick)="ngOnInit()"></app-goal>
-</a>
+</div>
