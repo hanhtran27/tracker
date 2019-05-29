@@ -46,6 +46,18 @@ export class RecordController {
         });
     }
 
+    public updateRecord(req: Request, res: Response) {
+        Record.findOneAndUpdate({ _id: req.params.recordId },
+        req.body,
+        { new: true },
+        (err, record) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json(record);
+        });
+    }
+
     public deleteRecord(req: Request, res: Response) {           
         Record.deleteOne({ _id: req.params.recordId }, 
             (err) => {

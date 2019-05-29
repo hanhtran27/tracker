@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "paths": { "*": ["types/*"] },
         "module": "commonjs",
         "moduleResolution": "node",
         "pretty": true,
@@ -9,7 +10,7 @@
         "baseUrl": "./lib"      
     },
     "include": [
-        "lib/**/*.ts"
+        "lib/**/*.ts", "lib/test/test.ts"
     ],
     "exclude": [
         "node_modules"
