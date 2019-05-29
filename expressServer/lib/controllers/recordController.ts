@@ -38,7 +38,7 @@ export class RecordController {
     }
 
     public getRecordsWithGoalId(req: Request, res: Response) {
-        Record.find({"goalId": mongoose.Types.ObjectId.ObjectId(req.params.goalId)}, (err, records) => {
+        Record.find({"goalId": mongoose.Types.ObjectId(req.params.goalId)}, (err, records) => {
             if (err) {
                 res.send(err);
             }
@@ -60,7 +60,7 @@ export class RecordController {
 
     public deleteRecord(req: Request, res: Response) {           
         Record.deleteOne({ _id: req.params.recordId }, 
-            (err, record) => {
+            (err) => {
             if(err){
                 res.send(err);
             }
