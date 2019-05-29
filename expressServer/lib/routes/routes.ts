@@ -12,11 +12,6 @@ class Routes {
     public loginController: LoginController = new LoginController();
     
     public routes(app): void {
-        app.route('/test').get(
-            (req, res) => {
-                res.end("hello world");
-            }
-        )
         //LOGIN
         app.route('/login')
             .post(this.loginController.login);

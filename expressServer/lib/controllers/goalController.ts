@@ -43,7 +43,7 @@ export class GoalController {
         //return goals of the curently login user
         Goal.find({userId:userId}, (err, goal) => {
             if (err) {
-                res.send(err);
+                res.end(err);
             }
             res.json(goal);
             });
