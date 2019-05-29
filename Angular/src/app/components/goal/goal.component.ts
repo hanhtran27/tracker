@@ -51,28 +51,6 @@ export class GoalComponent implements OnInit {
     let finishedPercentage = totalFinishedUnits*100/parseInt(goal.goalNumber.toString());
     this.finishedPercentage = finishedPercentage.toFixed(0) + "%";
   }
-
-  deleteGoal() {
-    console.log("calling deleteGoal with " + this.goal._id);
-
-    // emit a signal to notify parent component(goal-list)
-    this.goalService.deleteGoal(this.goal._id)
-      .subscribe(() => this.deletedClick.emit(true)); 
-  }
-
-  updateGoal(goalName: HTMLInputElement,
-    tag: HTMLInputElement,
-    goalNumber: HTMLInputElement,
-    goalUnit: HTMLInputElement,
-    startDate: HTMLInputElement,
-    dueDate: HTMLInputElement) {
-
-    let newGoal = new Goal(goalName.value, tag.value, goalNumber.valueAsNumber, goalUnit.value, startDate.valueAsDate, dueDate.valueAsDate, this.goal._id);
-
-    this.goalService.updateGoal(newGoal)
-      .subscribe(() => this.updatedClick.emit(true)); 
-  }
-
   ngOnInit() {
     this.finishedPercentage = "0%";
   }

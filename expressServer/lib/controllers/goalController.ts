@@ -31,6 +31,7 @@ export class GoalController {
 
     public getGoalWithId(req: Request, res: Response) {
         Goal.findById(req.params.goalId, (err, goal) => {
+            console.log("Trying to get goal with id " + req.params.goalId);
             if (err) {
                 res.send(err);
             }

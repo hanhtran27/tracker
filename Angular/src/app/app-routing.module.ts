@@ -6,13 +6,16 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GoalListComponent } from './components/goal-list/goal-list.component';
+import { GoalComponent } from './components/goal/goal.component';
+import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent},
-  {path: 'myGoals', component: GoalListComponent}
+  {path: 'myGoals', component: GoalListComponent},
+  {path: 'detail/:id', component: GoalDetailsComponent}
 ];
 
 @NgModule({

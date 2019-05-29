@@ -63,13 +63,11 @@
     </div>
 </div>
 
-<!--display goals-->
-<div class="container">
-    <div class="card" *ngFor="let goal of goals">
-        <app-goal 
-            [goal]="goal" 
-            (deletedClick)="ngOnInit()"
-            (updatedClick)="ngOnInit()"> 
-        </app-goal>
-    </div>
-</div>
+<h3>Top Goals</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let goal of goals" class="col-1-4"
+  routerLink = "/detail/{{goal._id}}">
+  <app-goal [goal]="goal" (deletedClick)="ngOnInit()" (updatedClick)="ngOnInit()"> </app-goal>
+    <div class="module goal">
+      <h4>{{goal.goalName}}</h4>
+      <p>DueDate: {{goal.dueDate | date: 'shortDate'}}</p>

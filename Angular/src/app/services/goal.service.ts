@@ -9,16 +9,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class GoalService {
 
-  private getGoalUrl = 'http://localhost:8080/goals';
+  private getGoalsUrl = 'http://localhost:8080/goals';
+  private getGoalUrl = 'http://localhost:8080/goal/';
   private postGoalUrl = 'http://localhost:8080/goal';
   private deleteGoalUrl = 'http://localhost:8080/goal/';
   private updateGoalUrl = 'http://localhost:8080/goal/';
+  
 
   //inject HttpClient
   constructor(private http: HttpClient) { }
 
   getGoals(): Observable<Goal[]> {
-    return this.http.get<Goal[]>(this.getGoalUrl);
+    return this.http.get<Goal[]>(this.getGoalsUrl);
   }
 
   addGoal(goal: Goal): Observable<Goal> {
@@ -31,6 +33,10 @@ export class GoalService {
 
   updateGoal(goal: Goal): Observable<{}> {
     return this.http.put(this.updateGoalUrl + goal._id, goal);
+  }
+
+  getGoalById(goalId: string): Observable<Goal> {
+    return this.http.get<Goal>(this.getGoalUrl + goalId);
   }
 }
 
