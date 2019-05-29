@@ -12,7 +12,7 @@ class Routes {
     public loginController: LoginController = new LoginController();
     
     public routes(app): void {
-        app.route('/test').post(
+        app.route('/test').get(
             (req, res) => {
                 res.end("hello world");
             }
