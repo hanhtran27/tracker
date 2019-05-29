@@ -13,8 +13,6 @@ describe('Testing GET goals', () => {
   it('Should return a list of objects', (done) => {
     chai.request(app)
         .get('/goals')
-        //pass in header
-        .set('authorization', 'htran@fake.email.com&')
         .end(function(err, res) {
             chai.expect(err).to.be.null;
             chai.expect(res).to.have.status(200);
@@ -35,15 +33,15 @@ describe('Testing GET goals', () => {
   });
 
   it('Should return a single object', (done) => {
-    const goalId = '5ce3b88f760dc73c92b26962'
+    const goalId = '5ceeadfd0f7806983d70672c'
     chai.request(app)
         .get(`/goal/${goalId}`)
         .end(function(err, res) {
             chai.expect(err).to.be.null;
             chai.expect(res).to.have.status(200);
             chai.expect(res.body).to.include.keys('goalName');
-            chai.expect(res).to.be.json;
             chai.expect(res.body).to.include.keys('_id');
+            chai.expect(res).to.be.json;
             chai.expect(res.body).to.have.property('tag').that.is.a('string');
             done();
         })

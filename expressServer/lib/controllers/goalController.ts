@@ -8,21 +8,8 @@ mongoose.set('useFindAndModify', false);
 
 export class GoalController {
 
-    public async addNewGoal(req: Request, res: Response) {
-        let userId:string;
-        //get userid out to add to goal
-        await TokenController.getUserIdFromToken(req.header('authorization')).then((result) => {
-            userId = result;
-        });
-
-        //add goal for the curently login user
-        let newGoal = new Goal ({userId: userId,
-                        goalName: req.body.goalName,
-                        tag:req.body.tag,
-                        goalNumber: req.body.goalNumber,
-                        goalUnit: req.body.goalUnit,
-                        startDate: req.body.startDate,
-                        dueDate: req.body.dueDate});
+    public addNewGoal(req: Request, res: Response) {
+        let newGoal = new Goal (req.body);
 
         newGoal.save((err, goal) => {
             if (err) {
@@ -34,19 +21,14 @@ export class GoalController {
         console.log("new goal created: " + req.body.goalName);
     }
 
-    public async getGoals(req: Request, res: Response) {
-        let userId:string;
-
-        await TokenController.getUserIdFromToken(req.header('authorization')).then((result) => {
-            userId = result;
-        });
+    public getGoals(req: Request, res: Response) {
         //return goals of the curently login user
-        Goal.find({userId:userId}, (err, goal) => {
+        Goal.find({}, (err, goal) => {
             if (err) {
                 res.end(err);
             }
             res.json(goal);
-            });
+        });
     }
 
     public getGoalWithId(req: Request, res: Response) {

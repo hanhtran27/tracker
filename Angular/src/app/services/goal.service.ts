@@ -18,24 +18,23 @@ export class GoalService {
   
 
   //inject HttpClient
-  constructor(private http: HttpClient,
-              private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   // pass token to header after login            
-  httpOptions() {
-    return {
-      headers: new HttpHeaders({
-        'authorization': this.authService.getToken()
-      })
-    }
-  }
+  // httpOptions() {
+  //   return {
+  //     headers: new HttpHeaders({
+  //       'authorization': this.authService.getToken()
+  //     })
+  //   }
+  // }
 
   getGoals(): Observable<Goal[]> {
-    return this.http.get<Goal[]>(this.getGoalsUrl,this.httpOptions());
+    return this.http.get<Goal[]>(this.getGoalsUrl);
   }
 
   addGoal(goal: Goal): Observable<Goal> {
-    return this.http.post<Goal>(this.postGoalUrl, goal,this.httpOptions());
+    return this.http.post<Goal>(this.postGoalUrl,goal);
   }
 
   deleteGoal(goalId: string): Observable<{}> {
