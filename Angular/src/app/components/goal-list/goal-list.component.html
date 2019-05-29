@@ -55,7 +55,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    (click)="addGoal(newGoalName, newTag, newgoalNumber, newgoalUnit, newstartDate, newdueDate)">
+                    (click)="addGoal(newGoalName, newTag, newgoalNumber, newgoalUnit, newstartDate, newdueDate);">
                     Submit
                 </button>
             </div>
@@ -64,10 +64,6 @@
 </div>
 
 <h3>Top Goals</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let goal of goals" class="col-1-4"
-  routerLink = "/detail/{{goal._id}}">
-  <app-goal [goal]="goal" (deletedClick)="ngOnInit()" (updatedClick)="ngOnInit()"> </app-goal>
-    <div class="module goal">
-      <h4>{{goal.goalName}}</h4>
-      <p>DueDate: {{goal.dueDate | date: 'shortDate'}}</p>
+<a *ngFor="let goal of goals" class="col-1-4"routerLink = "/detail/{{goal._id}}">
+    <app-goal [goal]="goal" (deletedClick)="ngOnInit()" (updatedClick)="ngOnInit()"></app-goal>
+</a>

@@ -59,12 +59,14 @@ export class GoalDetailsComponent implements OnInit {
     this.finishedPercentage = finishedPercentage.toFixed(0) + "%";
   }
 
-  addRecord(finishedUnits: number, finishedDate: Date): void {
+  addRecord(finishedUnits: HTMLInputElement, finishedDate: HTMLInputElement): void {
     let goalId = this.goal._id;
-    let record = new Record(goalId,  finishedUnits, finishedDate);
+    let record = new Record(goalId, finishedUnits.valueAsNumber, finishedDate.valueAsDate);
     this.recordService
       .addRecord(record)
       .subscribe(addGoalResult => this.getRecordsByGoalId(goalId));
+      finishedUnits.value = "";
+      finishedDate.value = "";
   }
 
   deleteGoal() {

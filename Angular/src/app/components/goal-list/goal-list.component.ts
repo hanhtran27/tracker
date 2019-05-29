@@ -32,6 +32,13 @@ export class GoalListComponent implements OnInit {
 
     this.goalService.addGoal(newGoal)
       .subscribe(goalResult => this.goals.push(goalResult));
+    
+    goalName.value = "";
+    tag.value = "";
+    goalNumber.value = "";
+    goalUnit.value = "";
+    startDate.valueAsDate = "";
+    dueDate.valueAsDate = "";
   }
 
   
