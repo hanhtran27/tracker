@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { AuthGuard } from './guards/auth.guard';
-import { GoalListComponent } from './goal-list/goal-list.component';
+import { GoalListComponent } from './components/goal-list/goal-list.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},

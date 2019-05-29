@@ -8,10 +8,12 @@ var RecordController = /** @class */ (function () {
     function RecordController() {
     }
     RecordController.prototype.addNewRecord = function (req, res) {
+        console.log("creating new record... ");
         var newRecord = new Record(req.body);
         newRecord.save(function (err, record) {
             if (err) {
                 res.send(err);
+                console.log(err);
             }
             res.json(record);
         });

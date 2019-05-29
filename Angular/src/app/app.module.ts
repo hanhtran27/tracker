@@ -14,7 +14,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { AboutComponent } from './components/about/about.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GoalComponent } from './components/goal/goal.component';
-import { GoalListComponent } from './goal-list/goal-list.component';
+import { GoalListComponent } from './components/goal-list/goal-list.component';
 
 @NgModule({
   declarations: [
